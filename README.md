@@ -1,6 +1,9 @@
 [![Build Status](https://teamcity.jetbrains.com/app/rest/builds/buildType:JetBrainsUi_CreateReactKotlinApp/statusIcon.svg)](https://teamcity.jetbrains.com/viewType.html?buildTypeId=JetBrainsUi_CreateReactKotlinApp&guest=1)
 [![JetBrains team project](http://jb.gg/badges/team.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 
+[Japanese](https://github.com/JetBrains/create-react-kotlin-app/blob/master/README-ja.md)
+[Korean](https://github.com/JetBrains/create-react-kotlin-app/blob/master/README-ko.md)
+
 # Create React Kotlin App
 
 Create [React](https://facebook.github.io/react/) apps in [Kotlin](https://kotlinlang.org/) with no build configuration.
@@ -9,7 +12,7 @@ Please note that this is an **early preview version**.
 
 ## Quick Overview
 
-Make sure you have [JDK 8](http://www.oracle.com/technetwork/java/index.html) installed before proceeding. Java 9 is not supported yet.
+**Make sure you have [JDK 8](http://www.oracle.com/technetwork/java/index.html) installed before proceeding.** Java 9 is not supported yet.
 
 Create a new project:
 
@@ -55,8 +58,7 @@ You can find a documentation for it and examples in the [module's repository](ht
 ### Adding Kotlin/JS packages
 
 **No configuration is required** to add packages written in Kotlin to a project based on Create React Kotlin App, we take care of it for you. 
-Simply run `npm install kotlinx-coroutines-core` to add [https://www.npmjs.com/package/kotlinx-coroutines-core](coroutines) support, 
-or `npm install @jetbrains/kotlin-react-router-dom` to install the [wrapper for React Router DOM](https://www.npmjs.com/package/@jetbrains/kotlin-react-router-dom).
+For example, you can simply run `npm install @jetbrains/kotlin-react-router-dom` to install the [wrapper for React Router DOM](https://www.npmjs.com/package/@jetbrains/kotlin-react-router-dom).
 
 ### Creating an App
 
@@ -182,3 +184,4 @@ Contributions to this project are welcome! Please see the open [issues](https://
 ## Acknowledgements
 
 This project is based on Facebook's [Create React App](https://github.com/facebookincubator/create-react-app). Many thanks to its authors for their work and inspiration.
+

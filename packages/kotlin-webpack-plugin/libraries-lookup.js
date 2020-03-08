@@ -1,5 +1,6 @@
 'use strict';
 const fs = require('fs');
+const path = require('path');
 
 function lookupInPackage(pkg) {
   return (
@@ -12,7 +13,15 @@ function lookupInPackage(pkg) {
       .filter(dependencyName => dependencyName !== 'kotlin')
       .map(dependencyName => {
         try {
-          const main = require.resolve(dependencyName);
+          let main;
+          if (require.resolve.paths) {
+            // resolve only searches this scripts node_modules for the dependency in newer versions
+            const paths = require.resolve.paths(dependencyName);
+            paths.push(path.resolve(process.cwd(), 'node_modules'));
+            main = require.resolve(dependencyName, { paths });
+          } else {
+            main = require.resolve(dependencyName);
+          }
           // Kotlin libraries contain a <libraryname>.meta.js file
           const hasKotlinMetaFile = fs.existsSync(
             main.replace(/(\.js)?$/, '.meta.js')

@@ -93,6 +93,9 @@ measureFileSizesBeforeBuild(paths.appBuild)
     err => {
       console.log(chalk.red('Failed to compile.\n'));
       console.log((err.message || err) + '\n');
+      if (err.stack) {
+        console.log('stacktrace:', err.stack);
+      }
       process.exit(1);
     }
   );
@@ -101,7 +104,7 @@ measureFileSizesBeforeBuild(paths.appBuild)
 function build(previousFileSizes) {
   console.log('Creating an optimized production build...');
 
-  let compiler = webpack(config);
+  let compiler = webpack(Object.assign({}, config, { mode: 'production' }));
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
       if (err) {

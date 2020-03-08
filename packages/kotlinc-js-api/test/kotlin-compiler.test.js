@@ -12,10 +12,12 @@ kotlinCompiler
     sources: [__dirname],
     sourceMaps: true,
     moduleKind: 'commonjs',
-    libraries: [
-      '@jetbrains/kotlin-extensions',
-      '@jetbrains/kotlin-react',
-    ].map(lib => require.resolve(lib).replace(/(?:\.js)?$/, '.meta.js')),
+    plugin: require.resolve(
+      `kotlin-compiler/lib/kotlinx-serialization-compiler-plugin.jar`
+    ),
+    libraries: ['@jetbrains/kotlin-extensions', '@jetbrains/kotlin-react'].map(
+      lib => require.resolve(lib).replace(/(?:\.js)?$/, '.meta.js')
+    ),
   })
   .then(() => {
     return new Promise(resolve =>
@@ -39,4 +41,8 @@ kotlinCompiler
     } else {
       console.info('Test passed');
     }
+  })
+  .catch(err => {
+    console.error('kotlinc-js-api test failed:', err);
+    process.exit(1);
   });

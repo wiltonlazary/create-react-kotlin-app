@@ -1,8 +1,8 @@
 #!/bin/bash
 # Copyright (c) 2015-present, Facebook, Inc.
 
-This source code is licensed under the MIT license found in the
-LICENSE file in the root directory of this source tree.
+# This source code is licensed under the MIT license found in the
+# LICENSE file in the root directory of this source tree.
 
 # ******************************************************************************
 # This is an end-to-end test intended to run on CI.
@@ -251,6 +251,12 @@ echo yes | npm run eject
 
 # ...but still link to the local packages
 npm link "$root_path"/packages/gen-idea-libs
+# Fixes "Refusing to delete ... isn't under npm's control" error
+rm -rf "$root_path"/packages/kotlin-webpack-plugin/node_modules/.bin
+rm -rf "$root_path"/packages/react-scripts/node_modules/.bin
+rm -rf "$root_path"/packages/kotlinc-js-api/node_modules/.bin
+rm -rf "$root_path"/packages/ts2kt-automator/node_modules/.bin
+
 npm link "$root_path"/packages/kotlin-webpack-plugin
 npm link "$root_path"/packages/kotlinc-js-api
 npm link "$root_path"/packages/react-scripts
